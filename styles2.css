@@ -63,7 +63,7 @@ body{
     outline: none;
 
     text-align: center;
-    background: rgb(158, 158, 158);
+    background: white;
     border-radius: 1px;
     border: solid 1px rgb(121, 121, 121);
     flex-wrap: wrap;

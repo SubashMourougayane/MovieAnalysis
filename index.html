@@ -3,27 +3,27 @@
 
 <head>
     <title>CinEX</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="light.css">
-=======
-    <link id="lnk"type="text/css" rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
->>>>>>> e1b9095113033794386c11de3026886ecbf167df
-    <!-- <script src="./app.js"></script> -->
+    <link id="lnk" type="text/css" rel="stylesheet" href="styles.css">
     <script>
-        var allData = {};
+        var allData;
+        var originalData;
         window.onload = function () {
-            if (!(localStorage.getItem('isdataloaded') === "yes")) {
+            if ((sessionStorage.getItem('isdataloaded') !== "yes")) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "http://starlord.hackerearth.com/movieslisting", true);
                 xhr.onload = function (e) {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
                             // console.log(xhr.responseText);
-                            localStorage.setItem('alldata', xhr.responseText);
-                            localStorage.setItem('isdataloaded', "yes");
-                            window.location.reload();
+                            sessionStorage.setItem('alldata', xhr.responseText);
+                            sessionStorage.setItem('isdataloaded', "yes");
                             allData = JSON.parse(xhr.responseText);
+                            originalData = Array.from(allData);
+
+                            window.location.reload();
+                            sessionStorage.setItem('originaldata', JSON.stringify(originalData));
+                            console.log("original data", originalData);
 
                         } else {
                             console.error(xhr.statusText);
@@ -36,12 +36,61 @@
                 xhr.send(null);
             }
         }
-        searchFun = function(){
+        searchFun = function () {
+            originalData = JSON.parse(sessionStorage.getItem('originaldata'));
+            var searchData = [];
+            var langData = [];
+            var genereData = [];
+            var countryData = [];
+            var yearData = [];
             var genre = document.getElementById('input1').value;
             var lang = document.getElementById('lang').value;
             var country = document.getElementById('coun').value;
             var year = document.getElementById('yr').value;
-            
+            if (genre === "" || lang === "" || country === "" || year === "") {
+                alert("Please Provide Search Filters Since API Even has empty values !");
+            }
+            else {
+                for (var i = 0; i < Object.keys(originalData).length; i++) {
+                    if (originalData[i].genres.includes(genre)) {
+                        genereData.push(originalData[i]);
+                    }
+                }
+
+                for (var i = 0; i < Object.keys(genereData).length; i++) {
+                    if (genereData[i].language === lang) {
+                        langData.push(genereData[i]);
+                    }
+                }
+
+                for (var i = 0; i < Object.keys(langData).length; i++) {
+                    if (langData[i].country === country) {
+                        countryData.push(langData[i]);
+                    }
+                }
+
+                for (var i = 0; i < Object.keys(countryData).length; i++) {
+                    if (countryData[i].title_year === year) {
+                        yearData.push(countryData[i]);
+                    }
+                }
+
+
+                allData = yearData;
+                sessionStorage.setItem('alldata', JSON.stringify(allData));
+                window.location.reload();
+
+                console.log("final res ", allData);
+            }
+
+        }
+        toggleTheme = function () {
+            var link = document.getElementById("lnk");
+            if (link.getAttribute("href") === "styles.css") {
+                link.setAttribute("href", "styles2.css");
+            } else {
+                link.setAttribute("href", "styles.css")
+            }
         }
     </script>
 </head>
@@ -206,33 +255,20 @@
             <img class="search" src="./assets/search.png" onclick="searchFun()">
         </span>
 
-        <!-- <img class="pallete" src="./assets/pallete.png"> -->
         <div class="button-con">
-                <input class='toggle' id='cb1' type='checkbox'>
-                <label class='toggle-button' for='cb1'></label>
-              </div>
-
-
-
-
+            <input class='toggle' id='cb1' type='checkbox' onclick="toggleTheme()">
+            <label class='toggle-button' for='cb1'></label>
+        </div>
     </div>
     <div class="bucket">
-        <!-- <div class="card">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-                <p>dei</p>
-            </div>
-        </div> -->
         <script>
-            if (!(localStorage.getItem('isdataloaded') === "yes")) {
+            if (!(sessionStorage.getItem('isdataloaded') === "yes")) {
                 document.write("<div class='lds-hourglass'></div>");
             }
             else {
-                var allData = JSON.parse(localStorage.getItem('alldata'));
-                console.log("all data ", allData[57]);
+                var allData = JSON.parse(sessionStorage.getItem('alldata'));
                 for (var i = 0; i < Object.keys(allData).length; i++) {
-                    var S = `<div class="card"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>${allData[i].director_name}</p></div></div>`;
+                    var S = `<div class="card"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>by ${allData[i].director_name}</p><br><p>YEAR : ${allData[i].title_year}</p><br>Actors : <br>${allData[i].actor_1_name}<br>${allData[i].actor_2_name}<p></p></div></div>`;
                     document.write(S);
                 }
             }
@@ -243,17 +279,6 @@
     </div>
 
 </body>
-<script>
-    var link = document.getElementById("lnk");
-$('#cb1').on('click', function () {
-    
-    if(link.getAttribute("href") === "styles.css"){
-        link.setAttribute("href", "styles2.css");
-    } else{
-        link.setAttribute("href", "styles.css")
-    }
-    
-});
-</script>
+
 
 </html>
