@@ -3,7 +3,12 @@
 
 <head>
     <title>CinEX</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="light.css">
+=======
+    <link id="lnk"type="text/css" rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+>>>>>>> e1b9095113033794386c11de3026886ecbf167df
     <!-- <script src="./app.js"></script> -->
     <script>
         var allData = {};
@@ -201,7 +206,11 @@
             <img class="search" src="./assets/search.png" onclick="searchFun()">
         </span>
 
-        <img class="pallete" src="./assets/pallete.png">
+        <!-- <img class="pallete" src="./assets/pallete.png"> -->
+        <div class="button-con">
+                <input class='toggle' id='cb1' type='checkbox'>
+                <label class='toggle-button' for='cb1'></label>
+              </div>
 
 
 
@@ -234,5 +243,17 @@
     </div>
 
 </body>
+<script>
+    var link = document.getElementById("lnk");
+$('#cb1').on('click', function () {
+    
+    if(link.getAttribute("href") === "styles.css"){
+        link.setAttribute("href", "styles2.css");
+    } else{
+        link.setAttribute("href", "styles.css")
+    }
+    
+});
+</script>
 
 </html>
