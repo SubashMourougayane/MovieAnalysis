@@ -3,7 +3,7 @@
 
 <head>
     <title>CinEX</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="light.css">
     <!-- <script src="./app.js"></script> -->
     <script>
         var allData = {};
@@ -19,9 +19,7 @@
                             localStorage.setItem('isdataloaded', "yes");
                             window.location.reload();
                             allData = JSON.parse(xhr.responseText);
-                            // for (var i = 0; i < Object.keys(allData).length; i++) {
-                            //     console.log("movie", i, allData[i].movie_title);
-                            // }
+
                         } else {
                             console.error(xhr.statusText);
                         }
