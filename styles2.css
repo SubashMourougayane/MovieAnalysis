@@ -7,7 +7,7 @@ body{
  
     height: 100%;
     width: 100%;
-    background:white;
+    background:rgb(24, 24, 24);
     flex-wrap: wrap;
 
 
@@ -15,7 +15,7 @@ body{
 .strip{
     display: flex;
     height: 75px;
-    background: #0e83cd;
+    background: #181818;
     flex-wrap: wrap;
     min-width: 70px;
     min-height: 75px;
@@ -29,7 +29,7 @@ body{
     width: 70%;
     height: 100%;
     left: 30%;
-    background: aqua;
+    background: rgb(17, 17, 17);
     justify-content: center;
     flex-wrap: wrap;
 
@@ -61,15 +61,18 @@ body{
     max-width: 15%;
     border: none;
     outline: none;
+
     text-align: center;
-    background: white;
+    background: rgb(158, 158, 158);
     border-radius: 1px;
-    border: solid 1px white;
+    border: solid 1px rgb(121, 121, 121);
     flex-wrap: wrap;
     
 }
 
 .bucket{
+    background-color: rgb(37, 37, 37);
+    color: #fff;
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
@@ -79,7 +82,7 @@ body{
     display: flex;
     margin-top: 25px;
     margin-left: 60px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgb(160, 160, 160);
     transition: 0.3s;
     height: 200px;
     width: 200px;
@@ -89,13 +92,15 @@ body{
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 whitesmoke;
     
 }
 .container {
     padding: 2px 16px;
 }
+
   .search{
+      color: #fff;
       position: relative;
       height: 20px;
       width: 20px;
@@ -103,6 +108,7 @@ body{
       left: 10px;
   }
   .search:hover{
+      color: #fff;
      cursor: pointer; 
   }
   .pallete{
@@ -133,8 +139,8 @@ body{
   height: 0;
   margin: 6px;
   box-sizing: border-box;
-  border: 26px solid black;
-  border-color: black transparent black transparent;
+  border: 26px solid rgb(59, 59, 59);
+  border-color: rgb(121, 121, 121) transparent white transparent;
   animation: lds-hourglass 1.2s infinite;
 }
 @keyframes lds-hourglass {
@@ -166,6 +172,7 @@ body{
   
 
   .toggle {
+      color: #fff;
     display: none;
   }
   
@@ -189,7 +196,7 @@ body{
     height: 1em;
     position: relative;
     cursor: pointer;
-    border: 2px solid #000;
+    border: 2px solid #fff;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -220,14 +227,14 @@ body{
     padding: 2px;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    border: 2px solid #000;
+    border: 2px solid #fff;
     border-radius: 2em;
   }
   
   .toggle + .toggle-button:after {
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    background: #000;
+    background: #fff;
     content: "";
     border-radius: 1em;
   }

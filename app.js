@@ -21,3 +21,4 @@ function getAllData() {
     };
     xhr.send(null);
 }
+
