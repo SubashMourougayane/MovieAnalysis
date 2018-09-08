@@ -32,7 +32,13 @@
                 };
                 xhr.send(null);
             }
-
+        }
+        searchFun = function(){
+            var genre = document.getElementById('input1').value;
+            var lang = document.getElementById('lang').value;
+            var country = document.getElementById('coun').value;
+            var year = document.getElementById('yr').value;
+            
         }
     </script>
 </head>
@@ -42,7 +48,7 @@
         <div class="heading">
             C I N E X
         </div>
-        <input class="genere" list="genere" placeholder="Genres">
+        <input id="input1" class="genere" list="genere" placeholder="Genres">
         <datalist id="genere">
             <option value="Action">
             <option value="Adventure">
@@ -56,7 +62,7 @@
             <option value="Romance">
             <option value="Mystery">
         </datalist>
-        <input class="genere" list="language" placeholder="Language">
+        <input id="lang" class="genere" list="language" placeholder="Language">
         <datalist id="language">
             <option value="English">
             <option value="French">
@@ -67,7 +73,7 @@
             <option value="Spanish">
         </datalist>
 
-        <input class="genere" list="country" placeholder="Country">
+        <input id="coun" class="genere" list="country" placeholder="Country">
         <datalist id="country">
             <option value="USA">
             <option value="UK">
@@ -76,7 +82,7 @@
             <option value="China">
             <option value="Japan">
         </datalist>
-        <input class="genere" list="year" placeholder="Year">
+        <input id="yr" class="genere" list="year" placeholder="Year">
         <datalist id="year">
             <option value="2013">2018</option>
             <option value="2013">2016</option>
@@ -194,7 +200,7 @@
             <option value="1905">1905</option>
         </datalist>
         <span class="tooltiptext">
-            <img class="search" src="./assets/search.png">
+            <img class="search" src="./assets/search.png" onclick="searchFun()">
         </span>
 
         <img class="pallete" src="./assets/pallete.png">
@@ -218,10 +224,9 @@
             else {
                 var allData = JSON.parse(localStorage.getItem('alldata'));
                 console.log("all data ", allData[57]);
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < Object.keys(allData).length; i++) {
                     var S = `<div class="card"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>${allData[i].director_name}</p></div></div>`;
                     document.write(S);
-
                 }
             }
 

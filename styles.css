@@ -119,10 +119,11 @@ body{
 
 /* loader */
 .lds-hourglass {
-  display: inline-block;
-  position: relative;
+  display: flex;
   width: 64px;
   height: 64px;
+  justify-content: center;
+  align-items: center;
 }
 .lds-hourglass:after {
   content: " ";
