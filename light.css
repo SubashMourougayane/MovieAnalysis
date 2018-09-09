@@ -53,7 +53,7 @@ body{
 .genere{
     display: flex;
     width: 40%;
-    height: 35%;
+    height: 40%;
     justify-content: center;
     position: relative;
     color: black;
@@ -76,6 +76,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
+   
     
 }
 .card {
@@ -93,6 +94,7 @@ body{
 }
 
 .card:hover {
+    cursor: pointer;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     
 }
@@ -133,11 +135,11 @@ body{
 
 /* loader */
 .lds-hourglass {
-  display: flex;
   width: 64px;
   height: 64px;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 .lds-hourglass:after {
   content: " ";
@@ -148,7 +150,7 @@ body{
   margin: 6px;
   box-sizing: border-box;
   border: 26px solid black;
-  border-color: black transparent black transparent;
+  border-color: #0e83cd transparent #0e83cd transparent;
   animation: lds-hourglass 1.2s infinite;
 }
 @keyframes lds-hourglass {

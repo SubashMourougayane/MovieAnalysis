@@ -108,42 +108,45 @@
         <div class="heading">
             C I N E X
         </div>
-        <input id="input1" class="genere" list="genere" placeholder="Genres">
-        <datalist id="genere">
-            <option value="Action">
-            <option value="Adventure">
-            <option value="Fantasy">
-            <option value="Sci-Fi">
-            <option value="Thriller">
-            <option value="Documentary">
-            <option value="Animation">
-            <option value="Comedy">
-            <option value="Musical">
-            <option value="Romance">
-            <option value="Mystery">
-        </datalist>
-        <input id="lang" class="genere" list="language" placeholder="Language">
-        <datalist id="language">
-            <option value="English">
-            <option value="French">
-            <option value="Japanese">
-            <option value="French">
-            <option value="Mandarin">
-            <option value="Aboriginal">
-            <option value="Spanish">
-        </datalist>
+        <select class="genere" id="input1" name="country">
+            <option value="">Genere</option>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Animation">Animation</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Musical">Musical</option>
+            <option value="Romance">Romance</option>
+            <option value="Mystery">Mystery</option>
 
-        <input id="coun" class="genere" list="country" placeholder="Country">
-        <datalist id="country">
-            <option value="USA">
-            <option value="UK">
-            <option value="Australia">
-            <option value="Germany">
-            <option value="China">
-            <option value="Japan">
-        </datalist>
-        <input id="yr" class="genere" list="year" placeholder="Year">
-        <datalist id="year">
+        </select>
+
+        <select class="genere" id="lang" name="country">
+            <option value="">Language</option>
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Japanese">Japanese</option>
+            <option value="French">French</option>
+            <option value="Mandarin">Mandarin</option>
+            <option value="Aboriginal">Aboriginal</option>
+            <option value="Spanish">Spanish</option>
+        </select>
+
+        <select class="genere" id="coun" name="country">
+            <option value="">Country</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+            <option value="Germany">Germany</option>
+            <option value="China">China</option>
+            <option value="Japan">Japan</option>
+            <option value="Spanish">Spanish</option>
+        </select>
+        <select class="genere" id="yr" name="country">
+            <option value="">Year</option>
             <option value="2013">2018</option>
             <option value="2013">2016</option>
             <option value="2013">2016</option>
@@ -258,13 +261,13 @@
             <option value="1907">1907</option>
             <option value="1906">1906</option>
             <option value="1905">1905</option>
-        </datalist>
-        <img class="search" src="./assets/search.png" onclick="searchFun()" title="Search">
-        <img class="nosearch" src="./assets/clear-filters.png" onclick="clearFilter()" title="Remove Filter">
-        <div title="Switch Theme" class="button-con">
-            <input class='toggle' id='cb1' type='checkbox' onclick="toggleTheme()">
-            <label class='toggle-button' for='cb1'></label>
-        </div>
+        </select>
+            <img class="search" src="./assets/search.png" onclick="searchFun()" title="Search">
+            <img class="nosearch" src="./assets/clear-filters.png" onclick="clearFilter()" title="Remove Filter">
+            <div title="Switch Theme" class="button-con">
+                <input class='toggle' id='cb1' type='checkbox' onclick="toggleTheme()">
+                <label class='toggle-button' for='cb1'></label>
+            </div>
     </div>
     <div class="bucket">
         <script>
@@ -274,7 +277,7 @@
             else {
                 var allData = JSON.parse(sessionStorage.getItem('alldata'));
                 for (var i = 0; i < Object.keys(allData).length; i++) {
-                    var S = `<div class="card"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>by ${allData[i].director_name}</p><br><p>Year : ${allData[i].title_year}</p><br>Actors : <br>${allData[i].actor_1_name}<br>${allData[i].actor_2_name}<p></p></div></div>`;
+                    var S = `<div class="card" onclick="window.open('${allData[i].movie_imdb_link}')"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>by ${allData[i].director_name}</p><br><p>Year : ${allData[i].title_year}</p><br>Actors : <br>${allData[i].actor_1_name}<br>${allData[i].actor_2_name}<p></p></div></div>`;
                     document.write(S);
                 }
             }
@@ -282,17 +285,8 @@
         </script>
 
     </div>
-    <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a class="active" href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-    </div>
-    </div>
+ 
+</div>
 
 </body>
 
