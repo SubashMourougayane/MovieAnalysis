@@ -9,6 +9,7 @@
         var allData;
         var originalData;
         window.onload = function () {
+            sessionStorage.setItem("theme","white");
             if ((sessionStorage.getItem('isdataloaded') !== "yes")) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "http://starlord.hackerearth.com/movieslisting", true);
@@ -85,6 +86,19 @@
 
         }
         toggleTheme = function () {
+            if(sessionStorage.getItem("theme")=="white")
+            {
+                document.getElementById("search-id").src ="./assets/search-white.png";
+                document.getElementById("filter-id").src ="./assets/clear-filters-white.png";
+                console.log("hello");
+                sessionStorage.setItem("theme","dark");
+            }
+            else{
+                document.getElementById("search-id").src ="./assets/search.png";
+                document.getElementById("filter-id").src ="./assets/clear-filters.png";
+                sessionStorage.setItem("theme","dark");
+                
+            }
             var link = document.getElementById("lnk");
             if (link.getAttribute("href") === "styles.css") {
                 link.setAttribute("href", "styles2.css");
@@ -262,11 +276,15 @@
             <option value="1906">1906</option>
             <option value="1905">1905</option>
         </select>
-            <img class="search" src="./assets/search.png" onclick="searchFun()" title="Search">
-            <img class="nosearch" src="./assets/clear-filters.png" onclick="clearFilter()" title="Remove Filter">
-            <div title="Switch Theme" class="button-con">
-                <input class='toggle' id='cb1' type='checkbox' onclick="toggleTheme()">
-                <label class='toggle-button' for='cb1'></label>
+            <div class="search-container">
+                <img class="search" id="search-id" src="./assets/search.png" onclick="searchFun()" title="Search">
+                <img class="nosearch" id="filter-id" src="./assets/clear-filters.png" onclick="clearFilter()" title="Remove Filter">
+                <div class="conatiner">
+                    <label for="checkbox" class="switch"  title="Switch theme" >
+                      <input type="checkbox" id="checkbox" onchange="toggleTheme()">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
             </div>
     </div>
     <div class="bucket">
@@ -277,7 +295,7 @@
             else {
                 var allData = JSON.parse(sessionStorage.getItem('alldata'));
                 for (var i = 0; i < Object.keys(allData).length; i++) {
-                    var S = `<div class="card" onclick="window.open('${allData[i].movie_imdb_link}')"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>by ${allData[i].director_name}</p><br><p>Year : ${allData[i].title_year}</p><br>Actors : <br>${allData[i].actor_1_name}<br>${allData[i].actor_2_name}<p></p></div></div>`;
+                    var S = `<div class="card" onclick="window.open('${allData[i].movie_imdb_link}')"><div class="container"><h4><b>${allData[i].movie_title}</b></h4><p>by ${allData[i].director_name}</p><br><p>Year : ${allData[i].title_year}</p><br>Actors : <br>${allData[i].actor_1_name}<br><span class="overflow">${allData[i].actor_2_name}</span></div></div>`;
                     document.write(S);
                 }
             }

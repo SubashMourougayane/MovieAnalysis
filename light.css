@@ -14,6 +14,11 @@ body{
 }
 .strip{
   position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: 0;
+  left: 0;
     display: flex;
     height: 75px;
     width:100%;
@@ -37,18 +42,11 @@ body{
 
 }
 .heading{
-    display: flex;
     width: 100px;
     justify-content: center;
-    /* background: aqua; */
-    position: relative;
     color: white;
-    top:33%;
     font-size: 21px;
-    margin-left: 50px;
     max-width: 100px;
-    margin-right: 10%;
-    flex-wrap: wrap;
 }
 .genere{
     display: flex;
@@ -57,7 +55,6 @@ body{
     justify-content: center;
     position: relative;
     color: black;
-    top:33%;
     font-size: 14px;
     margin-left: 5px;
     max-width: 15%;
@@ -72,24 +69,22 @@ body{
 }
 
 .bucket{
-
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-   
-    
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 100px;
 }
 .card {
-    display: flex;
-    margin-top: 115px;
-    margin-left: 80px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    height: 200px;
-    width: 200px;
+    height: 220px;
+    width: 250px;
     min-width: 200px;
     border-radius: 5px;
     flex-wrap: wrap;
+    margin: 20px 10px;
     
 }
 
@@ -101,22 +96,25 @@ body{
 .container {
     padding: 2px 16px;
 }
+.conatiner{
+  display: flex;
+  align-items: center;
+}
+.switch{
+  transform: scale(0.6)!important;
+}
   .search{
-      position: relative;
       height: 20px;
+      margin: 0 10px!important;
       width: 20px;
-      top: 40%;
-      left: 20px;
   }
   .search:hover{
      cursor: pointer; 
   }
   .nosearch{
-    position: relative;
+    margin: 0 15px!important;
     height: 20px;
     width: 20px;
-    top:40%;
-    left: 50px;
 }
 .nosearch:hover{
   cursor: pointer;
@@ -167,90 +165,51 @@ body{
   }
 }
 
-/* toggle-button-switch-theme */
-.button-con {
-    float: right;
-    cursor: default;
-    position: relative;
-    left: 80px;
-    top: 30px;
-    /* top: 50%;
-    left: 50%;
-    margin-left: -76px;
-    margin-top: -18px; */
-  }
-  
-
-  .toggle {
-    display: none;
-  }
-  
-  .toggle, .toggle:after, .toggle:before, .toggle *, .toggle *:after, .toggle *:before, .toggle + .toggle-button {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  .toggle::-moz-selection, .toggle:after::-moz-selection, .toggle:before::-moz-selection, .toggle *::-moz-selection, .toggle *:after::-moz-selection, .toggle *:before::-moz-selection, .toggle + .toggle-button::-moz-selection {
-    background: none;
-  }
-  
-  .toggle::selection, .toggle:after::selection, .toggle:before::selection, .toggle *::selection, .toggle *:after::selection, .toggle *:before::selection, .toggle + .toggle-button::selection {
-    background: none;
-  }
-  
-  .toggle + .toggle-button {
-    outline: 0;
-    display: inline-block;
-    width: 2em;
-    height: 1em;
-    position: relative;
+  .switch{
+    position:relative;
+    display:inline-block;
+    width:60px;
+    height:34px;
+    border-radius:50px;
     cursor: pointer;
-    border: 2px solid #000;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
   
-  .toggle + .toggle-button:after, .toggle + .toggle-button:before {
-    position: relative;
-    display: block;
-    content: "";
-    width: 50%;
-    height: 100%;
+  .switch input{
+    display:none;
   }
   
-  .toggle + .toggle-button:after {
-    left: 0;
+  .slider{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#ccc;
+    transition:all 0.4s;
+    border-radius:50px;
   }
   
-  .toggle + .toggle-button:before {
-    display: none;
+  .slider:before{
+    position:absolute;
+    content:"";
+    height:26px;
+    width:26px;
+    left:4px;
+    bottom:4px;
+    background-color:white;
+    transition:all 0.4s;
+    border-radius:50px;
   }
   
-  .toggle:checked + .toggle-button:after {
-    left: 50%;
+  input:checked + .slider{
+    background-color:#000;
   }
   
-  .toggle + .toggle-button {
-    padding: 2px;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-    border: 2px solid #000;
-    border-radius: 2em;
+  input:checked + .slider:before{
+    transform:translateX(26px);
   }
-  
-  .toggle + .toggle-button:after {
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-    background: #000;
-    content: "";
-    border-radius: 1em;
-  }
-  
-  .toggle:checked + .toggle-button:after {
-    left: 50%;
-  }
+
+
 
 .pagination {
     display: inline-block;
@@ -270,3 +229,18 @@ body{
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+.overflow{
+  display: inline-block;
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.search-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
