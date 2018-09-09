@@ -13,8 +13,10 @@ body{
 
 }
 .strip{
+  position: fixed;
     display: flex;
     height: 75px;
+    width:100%;
     background: #0e83cd;
     flex-wrap: wrap;
     min-width: 70px;
@@ -70,6 +72,7 @@ body{
 }
 
 .bucket{
+
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
@@ -77,14 +80,15 @@ body{
 }
 .card {
     display: flex;
-    margin-top: 25px;
-    margin-left: 60px;
+    margin-top: 115px;
+    margin-left: 80px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     height: 200px;
     width: 200px;
     min-width: 200px;
     border-radius: 5px;
+    flex-wrap: wrap;
     
 }
 
@@ -100,11 +104,21 @@ body{
       height: 20px;
       width: 20px;
       top: 40%;
-      left: 10px;
+      left: 20px;
   }
   .search:hover{
      cursor: pointer; 
   }
+  .nosearch{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top:40%;
+    left: 50px;
+}
+.nosearch:hover{
+  cursor: pointer;
+}
   .pallete{
     position: relative;
     height: 20px;
@@ -156,7 +170,7 @@ body{
     float: right;
     cursor: default;
     position: relative;
-    left: 70px;
+    left: 80px;
     top: 30px;
     /* top: 50%;
     left: 50%;
@@ -235,3 +249,22 @@ body{
   .toggle:checked + .toggle-button:after {
     left: 50%;
   }
+
+.pagination {
+    display: inline-block;
+    
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
